@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+from gtts import gTTS
 
 from keras.layers import Bidirectional, Concatenate, Permute, Dot, Input, LSTM, Multiply , Embedding
 from keras.layers import RepeatVector, Dense, Activation, Lambda
@@ -320,6 +321,7 @@ def response(sentence):
 
   # print('Input: %s' % (sentence))
   print('Response: {}'.format(result))
+  return result
 
   # attention_plot = attention_plot[:len(result.split(' ')), :len(sentence.split(' '))]
   # plot_attention(attention_plot, sentence.split(' '), result.split(' '))
@@ -547,17 +549,34 @@ def beam_search_decoder(sentence , beam_width = 3):
 
   return output , prob
 
+def string_to_audio(input_string, delete):
+    language = 'en'
+    gen_audio = gTTS(text = input_string, lang=language, slow=False)
+    gen_audio.save("Output.mp3")
+    os.system("mpg123 output.mp3")
+    if (delete == True):
+      os.remove("Output.mp3")
+
 
 if __name__ == '__main__':
+      
+      debug = True
       
       r = sr.Recognizer()
       with sr.AudioFile( 'examples/voice_2.wav') as source:
     
         audio_text = r.listen(source)
         # using google speech recognition
+        
         text = r.recognize_google(audio_text)
-        print('Converting audio transcripts into text ...')
-        print(text)
+        if debug == True:
+              
+          print('Converting audio transcripts into text ...')
+          print(text)
 
-        (response(text))
-        beam_search_decoder(text)
+          result = response(text)
+          beam_search_decoder(text)
+
+          string_to_audio(result , False)
+
+

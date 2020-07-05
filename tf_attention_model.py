@@ -2,6 +2,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from gtts import gTTS
+import argparse
 
 from keras.layers import Bidirectional, Concatenate, Permute, Dot, Input, LSTM, Multiply , Embedding
 from keras.layers import RepeatVector, Dense, Activation, Lambda
@@ -559,9 +560,15 @@ def string_to_audio(input_string, delete):
 
 
 if __name__ == '__main__':
-      
-      debug = True
-      
+
+      parser = argparse.ArgumentParser(description='Conversational Bot')
+      parser.add_argument('-d', '--debug', type = bool, default= False, help='set debug value')
+      parser.add_argument('-o', '--options',type = str, help='set input option')
+
+      args = parser.parse_args()
+
+      debug = args.debug
+
       r = sr.Recognizer()
       with sr.AudioFile( 'examples/voice_2.wav') as source:
     
@@ -574,9 +581,9 @@ if __name__ == '__main__':
           print('Converting audio transcripts into text ...')
           print(text)
 
-          result = response(text)
-          beam_search_decoder(text)
+        result = response(text)
+        beam_search_decoder(text)
 
-          string_to_audio(result , False)
+        string_to_audio(result , False)
 
 

@@ -321,7 +321,8 @@ def response(sentence):
   result, sentence, attention_plot = evaluate(sentence)
 
   # print('Input: %s' % (sentence))
-  print('Response: {}'.format(result))
+  if debug == True:
+    print('Response: {}'.format(result))
   return result
 
   # attention_plot = attention_plot[:len(result.split(' ')), :len(sentence.split(' '))]
@@ -546,7 +547,8 @@ def beam_search_decoder(sentence , beam_width = 3):
   prob = [pred[1] / len(output[i])  for i , pred in enumerate(terminal_sentences)]
 
   # for i in range(beam_width):
-  print("resposne :{}  {} \n {} {} \n {} {} ".format(output[0] , prob[0] , output[1] ,prob[1] ,output[2] , prob[2]))
+  if debug == True:    
+    print("resposne :{}  {} \n {} {} \n {} {} ".format(output[0] , prob[0] , output[1] ,prob[1] ,output[2] , prob[2]))
 
   return output , prob
 
@@ -554,7 +556,7 @@ def string_to_audio(input_string, delete):
     language = 'en'
     gen_audio = gTTS(text = input_string, lang=language, slow=False)
     gen_audio.save("Output.mp3")
-    os.system("mpg123 output.mp3")
+    os.system("mpg123 Output.mp3")
     if (delete == True):
       os.remove("Output.mp3")
 
@@ -584,6 +586,6 @@ if __name__ == '__main__':
         result = response(text)
         beam_search_decoder(text)
 
-        string_to_audio(result , False)
+        string_to_audio(result , True)
 
 

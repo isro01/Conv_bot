@@ -89,8 +89,8 @@ This graph shows the optimal number of topics we need to set for news articles d
 ## Installation and usage 
 
 The requirements are in the requirements.txt file.
-`pip install -r requirements.txt `
-`python3 -m spacy download en`
+* `pip install -r requirements.txt `
+* `python3 -m spacy download en`
 The main file o focus is tf_attention_model.py.
 
 To run the bot ->

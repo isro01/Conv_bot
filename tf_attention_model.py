@@ -157,7 +157,7 @@ class Encoder(tf.keras.Model):
     super(Encoder, self).__init__()
     self.batch_sz = batch_sz
     self.enc_units = enc_units
-    self.embedding = tf.keras.layers.Embedding(vocab_size, embedding_dim)
+    self.embedding = tf.keras.layers.Embedding(vocab_size, embedding_dim , weights =[embeddingMatrix], trainable=False)
     self.gru = tf.keras.layers.GRU(self.enc_units,
                                    return_sequences=True,
                                    return_state=True,
@@ -209,12 +209,12 @@ class Decoder(tf.keras.Model):
     super(Decoder, self).__init__()
     self.batch_sz = batch_sz
     self.dec_units = dec_units
-    self.embedding = tf.keras.layers.Embedding(vocab_size, embedding_dim)
+    self.embedding = tf.keras.layers.Embedding(vocab_size, embedding_dim , , weights =[embeddingMatrix], trainable=False)
     self.gru = tf.keras.layers.GRU(self.dec_units,
                                    return_sequences=True,
                                    return_state=True,
                                    recurrent_initializer='glorot_uniform')
-    self.fc = tf.keras.layers.Dense(vocab_size)
+    self.fc = tf.keras.layers.Dense(vocab_size , activation = "softmax")
 
     # used for attention
     self.attention = BahdanauAttention(self.dec_units)
@@ -232,7 +232,7 @@ class Decoder(tf.keras.Model):
     x = tf.concat([tf.expand_dims(context_vector, 1), x], axis=-1)
 
     # passing the concatenated vector to the GRU
-    output, state = self.gru(x)
+    output, state = self.gru(x , initial_state = hidden)
 
     # output shape == (batch_size * 1, hidden_size)
     output = tf.reshape(output, (-1, output.shape[2]))
@@ -319,10 +319,12 @@ def plot_attention(attention, sentence, predicted_sentence):
 
 def response(sentence):
   result, sentence, attention_plot = evaluate(sentence)
+  x =0
 
   # print('Input: %s' % (sentence))
+      
   if debug == True:
-    print('Response: {}'.format(result))
+    print('Response: {}'.format(result)
   return result
 
   # attention_plot = attention_plot[:len(result.split(' ')), :len(sentence.split(' '))]
@@ -561,31 +563,48 @@ def string_to_audio(input_string, delete):
       os.remove("Output.mp3")
 
 
+def get_transcript():
+    mic = sr.Microphone()
+    r = sr.Recognizer()
+    print("Speak Now")
+    with mic as source: 
+        audio = r.listen(source, timeout=5, phrase_time_limit=10) 
+        try :
+            result = r.recognize_google(audio)
+            print(result)
+        except :
+            return None
+    return result
+
+
 if __name__ == '__main__':
 
-      parser = argparse.ArgumentParser(description='Conversational Bot')
-      parser.add_argument('-d', '--debug', type = bool, default= False, help='set debug value')
-      parser.add_argument('-o', '--options',type = str, help='set input option')
+      # parser = argparse.ArgumentParser(description='Conversational Bot')
+      # parser.add_argument('-d', '--debug', type = bool, default= False, help='set debug value')
+      # parser.add_argument('-o', '--options',type = str, help='set input option')
 
-      args = parser.parse_args()
+      # args = parser.parse_args()
+      debug = True
+      # debug = args.debug
 
-      debug = args.debug
-
-      r = sr.Recognizer()
-      with sr.AudioFile( 'examples/voice_2.wav') as source:
+      # r = sr.Recognizer()
+      # with sr.AudioFile( 'examples/voice_2.wav') as source:
     
-        audio_text = r.listen(source)
+        # audio_text = r.listen(source)
         # using google speech recognition
         
-        text = r.recognize_google(audio_text)
-        if debug == True:
+        # text = r.recognize_google(audio_text)
+        # if debug == True:
               
-          print('Converting audio transcripts into text ...')
-          print(text)
+          # print('Converting audio transcripts into text ...')
+          # print(text)
+      while True:
+        result = get_transcript()
 
-        result = response(text)
-        beam_search_decoder(text)
+        out = response(result)
+        
+        # beam_search_decoder(result)
 
-        string_to_audio(result , True)
+        string_to_audio(out , True)
 
 

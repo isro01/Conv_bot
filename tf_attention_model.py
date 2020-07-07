@@ -579,13 +579,13 @@ def get_transcript():
 
 if __name__ == '__main__':
 
-      # parser = argparse.ArgumentParser(description='Conversational Bot')
-      # parser.add_argument('-d', '--debug', type = bool, default= False, help='set debug value')
-      # parser.add_argument('-o', '--options',type = str, help='set input option')
+      parser = argparse.ArgumentParser(description='Conversational Bot')
+      parser.add_argument('-d', '--debug', type = bool, default= False, help='set debug value')
+      parser.add_argument('-o', '--options',type = str, help='set input option')
 
-      # args = parser.parse_args()
-      debug = True
-      # debug = args.debug
+      args = parser.parse_args()
+      # debug = True
+      debug = args.debug
 
       # r = sr.Recognizer()
       # with sr.AudioFile( 'examples/voice_2.wav') as source:

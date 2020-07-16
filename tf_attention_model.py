@@ -35,6 +35,9 @@ import zipfile
 import itertools
 from string import digits
 
+#for autocorrect
+from gingerit.gingerit import GingerIt
+
 import matplotlib.ticker as ticker
 
 import unicodedata
@@ -575,7 +578,12 @@ def get_transcript():
         except :
             return None
     return result
-
+          
+# for autocorrect
+parser = GingerIt()
+          
+def correct(text):
+    return parser.parse(text)["result"]
 
 if __name__ == '__main__':
 
@@ -604,7 +612,8 @@ if __name__ == '__main__':
         out = response(result)
         
         # beam_search_decoder(result)
+        corrected = correct(out)
 
-        string_to_audio(out , True)
+        string_to_audio(corrected , True)
 
 

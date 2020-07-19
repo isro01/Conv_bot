@@ -1,0 +1,23 @@
+put your dataset here.
+this model is trained on tensorflow dataset.
+your folder in this folder will look like- 
+
+-data
+--class_name
+---file_name.wav
+---file_name.wav
+---
+---
+---
+--class_name
+---file_name.wav
+---file_name.wav
+---
+---
+---
+
+and so on 
+
+
+
+command to download dataset on linux based kernel -> wget http://download.tensorflow.org/data/speech_commands_v0.01.tar.gz

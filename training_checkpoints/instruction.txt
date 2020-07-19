@@ -1,3 +1,3 @@
 these checkpoints are just shown for example , these are not actual checkpoints.
-you can get your own checkpoints by trianing ta-seq2seq model and replace your checckpoints with these checkpoints.
+you can get your own checkpoints by trianing ta-seq2seq model and replace these checkpoints with your checkpoints.
 you can also contact the repository owner for checkpoints but i do not sugest you to do so.

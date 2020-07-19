@@ -18,9 +18,11 @@ The requirements are in the requirements.txt file.
 
 The main file to focus is tf_attention_model.py.
 
-To run the bot ->
-`python3 tf_attention_model.py -d False`
+To run the ChatBot ->
+`python3 chatbot.py`
 
+To run the ConversationalBot ->
+`python3 conversational_bot.py`
 
 A demo video  : [![Watch the video](sample2.png "Sample")](https://github.com/isro01/Conv_bot/blob/master/convbot.mp4)
 

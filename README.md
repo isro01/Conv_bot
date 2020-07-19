@@ -42,7 +42,9 @@ This model is implemented to convert the audio messages of the user into text.
 <p align="center">
 <img src="https://user-images.githubusercontent.com/56124350/85904215-c2386d00-b825-11ea-99cf-b635187e99cc.png"     width="700" height="200">
 </p>
-Please look at the file [ctc_model.py](https://github.com/isro01/Conv_bot/blob/master/ctc_model.py) for the proper implementation.
+Please look at the file for the proper implementation :
+
+[ctc_model](https://github.com/isro01/Conv_bot/blob/master/ctc_model.py)
 
 ### CTC_Model Output
 <p align = "center">

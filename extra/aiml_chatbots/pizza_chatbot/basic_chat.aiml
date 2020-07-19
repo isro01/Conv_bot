@@ -1,0 +1,214 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<!-- basic_chat.aiml -->
+
+    <category><pattern>Hii</pattern><template><srai>HELLO</srai> </template></category>
+    <category><pattern>hi</pattern><template><srai>HELLO</srai></template></category>
+    <category><pattern>Hey</pattern><template><srai>HELLO</srai></template></category>
+    <category><pattern>Hey There!</pattern><template><srai>HELLO</srai></template></category>
+    <category><pattern>Hey Bitch</pattern><template><srai>HELLO</srai></template></category>
+    <category><pattern>Hi dude!</pattern><template><srai> HELLO</srai></template></category>
+    <category><pattern>Hi Listen</pattern><template><srai> HELLO</srai></template></category>
+    <category><pattern>HELLO</pattern><template>Hey Simp!</template></category>
+    <category><pattern>Hi I am *</pattern><template>Hey! <star/></template></category>
+    <category><pattern>Hi, I am *</pattern><template><srai> Hi I am *</srai></template></category>
+    <category><pattern>Hey, I am *</pattern><template><srai> Hi I am *</srai></template></category>
+    <category><pattern>Hola, I am *</pattern><template><srai> Hi I am *</srai></template></category>
+    <category><pattern>Hii, I am *</pattern><template><srai> Hyeiii I am *</srai></template></category>
+    <category><pattern>Hey dude, I am *</pattern><template><srai> Hi I am *</srai></template></category>
+    <category><pattern>Hi bitch, I am *</pattern><template><srai> Hi I am *</srai></template></category>
+
+    <category>
+        <pattern>WHAT ARE YOU</pattern>
+        <template>
+            I am a KickASS Pizza Bot.
+            How can I help you?
+        </template>
+    </category>
+
+     <category>
+        <pattern>WHO ARE YOU</pattern>
+        <template>
+            I am a KickASS Pizzas Bot.
+            How can I help you?
+        </template>
+    </category>
+
+    <category>
+        <pattern>HOW CAN YOU HELP ME</pattern>
+        <template>
+           I can help you in - 
+           Placing new orders, 
+           Tracking an existing order,
+           go to inquiry section.
+        </template>
+    </category>
+
+    <category>
+        <pattern>PLACE A ORDER</pattern>
+        <template>
+           Ok Sir, Do you need menu ? <think> <set name ="topic">ORDER</set></think>
+        </template>
+    </category>
+
+    <category>
+        <pattern>^ ORDER *</pattern>
+        <template>
+            <srai>PLACE A ORDER</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>ORDER *</pattern>
+        <template>
+            <srai>PLACE A ORDER</srai>
+        </template>
+    </category>
+
+    <topic name ="ORDER"> 
+
+        <category>
+            <pattern> YES </pattern>
+            <template>
+                    1. SIMPLE, 
+                    2. PANEER,
+                    3. CHICKEN
+
+                    .Reply me with the name of Pizza(s) you would like to order.
+            </template>
+        </category>
+
+        <category>
+                <pattern> NO </pattern>
+                <template>
+                Looks like you are a regular customer. Reply me with the name of Pizza(s) you would like to order.
+            </template>
+        </category>
+
+        <category>
+            <pattern> ADD * </pattern> 
+            <template> 
+                Added <set name = "list"> <star/> </set>to the list.
+                Do you want to add anthing else or proceed forward.
+            </template>
+        </category>
+
+        <category>
+            <pattern> ALSO ADD * </pattern>
+            <template> 
+                Added <set name ="list"><get name = "list"></get>, <star/></set> to the list.
+                Now you want to add anything else or proceed forward.
+            </template>
+        </category>
+
+        <category>
+            <pattern> PROCEED FORWARD </pattern>
+            <template> 
+                Your order list is as  <get name ="list"></get> . Hope you like the pizzas to !!!
+                Its time to pay for the fucking pizzas or you are a beggar and want to exit now. 
+            </template>
+        </category>
+
+        <category>
+            <pattern> PAY NOW </pattern>
+            <template> 
+                Do not care for the bill sir . Give me your debit card number ,CVV , password and every other detail. I'll do the rest for you my dear sir !.
+            </template>
+        </category>
+
+        <category>
+            <pattern> EXIT </pattern>
+            <template> bye bye dear sir . We are sure that you will come back.</template>
+        </category> 
+    </topic>
+
+        <category>
+            <pattern> TRACK MY ORDER </pattern>
+            <template>SIR PLEASE TELL ME YOUR ORDER NUMBER<think><set name="topic">TRACKING</set></think></template>
+        </category>
+
+        <category>
+            <pattern>^ TRACK ^</pattern>
+            <template>
+                <srai>TRACK MY ORDER </srai>
+            </template>
+        </category>
+
+        <category>
+            <pattern>TRACK *</pattern>
+            <template>
+                <srai>TRACK MY ORDER</srai>
+            </template>
+        </category>
+        
+    <topic name="TRACKING">
+        <category>
+            <pattern> ORDER NUMBER * </pattern>
+            <that>SIR PLEASE TELL ME YOUR ORDER NUMBER</that>
+            <template>
+                <random>
+                    <li> <think><set name ="id"><star/></set></think> Your order will reach in few minutes. </li>
+                    <li> LOOKS LIKE YOUR ORDER NUMBER <star/> IS WRONG. PLEASE TELL ME YOUR NAME</li>
+                    <li> We are preparing your order. <think><set name ="id"><star/></set></think> It will take some time to reach to your home.</li>
+                </random>
+            </template>
+        </category>
+
+        <category>
+            <pattern> * </pattern>
+            <that>SIR PLEASE TELL ME YOUR ORDER NUMBER</that>
+            <template>
+                <srai> order number <star/> </srai>
+            </template>
+        </category>
+
+        <category>
+            <pattern>  * </pattern>
+            <!-- <that>PLEASE TELL ME YOUR NAME</that> -->
+            <template> 
+                <random>
+                    <li> Oops , looks like no pizza order with this name . Please go to inquiry section for more details.</li>
+                    <li> May be id given by you is not correct. There is a order with name <star/> . We will deliver it soon </li>
+                </random>
+            </template>
+        </category>
+
+    </topic>
+
+        <category>
+            <pattern> GO TO INQUIRY </pattern>
+            <template>PLEASE TELL ME YOUR ORDER NUMBER AND NAME</template>
+        </category>
+
+        <category>
+            <pattern>^ INQUIRY ^</pattern>
+            <template>
+                <srai>GO TO inquiry</srai>
+            </template>
+        </category>
+
+        <category>
+            <pattern>INQUIRY *</pattern>
+            <template>
+                <srai>GO TO INQUIRY</srai>
+            </template>
+        </category>
+
+        <category>
+            <pattern> * </pattern>
+            <that>PLEASE TELL ME YOUR ORDER NUMBER AND NAME</that>
+            <template>
+                <random>
+                    <li> Looks like you had ordered for the pizzas but later you cancelled it. </li>
+                    <li> sorry , no entry with this name and id found !! . </li>
+                </random>
+            </template>
+        </category>
+
+        <category>
+            <pattern> BYE * </pattern>
+            <template>
+                Before going , would you like to give us a feedback ! PLEASE
+            </template>
+        </category>
+
+</aiml>

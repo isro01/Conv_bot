@@ -1,0 +1,1 @@
+run ./setup.sh to use this bot.

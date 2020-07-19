@@ -1,0 +1,3 @@
+put here pretrained word_embeddings
+rename your embeddings file name with embedding.txt
+

@@ -1,16 +1,11 @@
-# Prefix Beam Search
-Code for prefix beam search tutorial by @borgholt (FKA @labodk)
-
-Link: https://medium.com/corti-ai/ctc-networks-and-language-models-prefix-beam-search-explained-c11d1ee23306
-
 ### Code
-This repository contains two files with Python code:
+This repository contains two files with Python code for beam search decoder for ctc model:
 
 * `prefix_beam_search.py` contains all the code that is explained in the tutorial. I.e., the actual prefix beam search algorithm. 
 * `test.py` will load a language model, perform beam search on three examples and print the result along with the output from a greedy decoder for comparison.
 
 ### Examples
-The `examples` folder contains three examples of CTC output (2D NumPy arrays) from a CNN-based acoustic model. The model is trained on the LibriSpeech corpus (http://www.openslr.org/12). When executing `test.py` you should get the following output:
+The `examples` folder contains three examples of CTC output NumPy arrays) from a CNN-based acoustic model. The model is trained on the LibriSpeech corpus (http://www.openslr.org/12). When executing `test.py` you should get the following output:
 
 ```
 examples/example_2002.p
@@ -24,7 +19,7 @@ a loud laugh followed at chunkys expense
 examples/example_99.p
 
 BEFORE:
-but no ghoes tor anything else appeared upon the angient wall
+but no ghoes tor anything else appeared upon the angient wall(2D 
 
 AFTER:
 but no ghost or anything else appeared upon the ancient walls

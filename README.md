@@ -53,7 +53,7 @@ Please look at the file [ctc_model.py](https://github.com/isro01/Conv_bot/blob/m
 
 This model is implemtented to cover the response generation part of the conversational bot.
 
-<p float = "left">
+<p align = "center">
   <img src="https://user-images.githubusercontent.com/56124350/85904325-0c215300-b826-11ea-9312-e8ccd9cb2ce1.png" width="400" height="458">
   <img src="https://user-images.githubusercontent.com/56124350/85904328-0e83ad00-b826-11ea-9f48-179de5c00319.png" width="400" >
 </p>

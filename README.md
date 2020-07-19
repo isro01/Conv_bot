@@ -46,14 +46,11 @@ Please look at the file for the proper implementation :
 
 [ctc_model](https://github.com/isro01/Conv_bot/blob/master/ctc_model.py)
 
-### CTC_Model Output
-<p align = "center">
-  <img src="https://user-images.githubusercontent.com/56124350/85904301-f7dd5600-b825-11ea-8646-ffc41a9d8438.png"     width="500" height="500">
-</p>
-
+Dataset opted for training: [Librespeech](http://www.openslr.org/12/)
 ### ENCODER - DECODER MODEL
 
 This model is implemtented to cover the response generation part of the conversational bot.
+We trained this model on the dataset [Opensubtitles](http://opus.nlpl.eu/OpenSubtitles-v2018.php)
 
 <p align = "center">
   <img src="https://user-images.githubusercontent.com/56124350/85904325-0c215300-b826-11ea-9312-e8ccd9cb2ce1.png" width="400" height="458">

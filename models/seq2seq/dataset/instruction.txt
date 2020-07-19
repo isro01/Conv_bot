@@ -1,3 +1,0 @@
-put your dataset here.
-and name that file as data.x
-for example data.json file is newsgroup dataset , if you want to train your model on any other dataset , you must replace your dataset with same file name.

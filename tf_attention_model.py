@@ -576,6 +576,20 @@ def get_transcript():
             return None
     return result
 
+def get_audio_file(path):
+      r = sr.Recognizer()
+      with sr.AudioFile(path) as source:
+    
+        audio_text = r.listen(source)
+        using google speech recognition
+        
+        text = r.recognize_google(audio_text)
+        if debug == True:
+              
+          print('Converting audio transcripts into text ...')
+          print(text)
+      
+      return text
 
 if __name__ == '__main__':
 
@@ -587,24 +601,11 @@ if __name__ == '__main__':
       # debug = True
       debug = args.debug
 
-      # r = sr.Recognizer()
-      # with sr.AudioFile( 'examples/voice_2.wav') as source:
-    
-        # audio_text = r.listen(source)
-        # using google speech recognition
-        
-        # text = r.recognize_google(audio_text)
-        # if debug == True:
-              
-          # print('Converting audio transcripts into text ...')
-          # print(text)
       while True:
         result = get_transcript()
 
         out = response(result)
-        
-        # beam_search_decoder(result)
-
+    
         string_to_audio(out , True)
 
 

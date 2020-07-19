@@ -1,0 +1,2 @@
+after training , here your model checkpoints will appear.
+checkpoints will be similar to like present in /conv_bot/lda_checkpoints.

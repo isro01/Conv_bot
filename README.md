@@ -39,9 +39,9 @@ The three main parts of this project were:
 ### CTC_MODEL
 
 This model is implemented to convert the audio messages of the user into text.
-
-<img src="https://user-images.githubusercontent.com/56124350/85904215-c2386d00-b825-11ea-99cf-b635187e99cc.png"     width="800" height="300">
-
+<p align="center">
+<img src="https://user-images.githubusercontent.com/56124350/85904215-c2386d00-b825-11ea-99cf-b635187e99cc.png"     width="700" height="200">
+</p>
 Please look at the file [ctc_model.py](https://github.com/isro01/Conv_bot/blob/master/ctc_model.py) for the proper implementation.
 
 ### CTC_Model Output
@@ -54,7 +54,7 @@ Please look at the file [ctc_model.py](https://github.com/isro01/Conv_bot/blob/m
 This model is implemtented to cover the response generation part of the conversational bot.
 
 <p float = "left">
-  <img src="https://user-images.githubusercontent.com/56124350/85904325-0c215300-b826-11ea-9312-e8ccd9cb2ce1.png" width="400" height="450">
+  <img src="https://user-images.githubusercontent.com/56124350/85904325-0c215300-b826-11ea-9312-e8ccd9cb2ce1.png" width="400" height="458">
   <img src="https://user-images.githubusercontent.com/56124350/85904328-0e83ad00-b826-11ea-9f48-179de5c00319.png" width="400" >
 </p>
 
@@ -96,4 +96,9 @@ This graph shows the optimal number of topics we need to set for news articles d
 
 ---
 
+### References you might find useful
 
+* [For LDA model](https://arxiv.org/pdf/1608.02519.pdf)
+* [For data augmentation](https://medium.com/@makcedward/data-augmentation-for-audio-76912b01fdf6)
+* [For data generator class boiler plate](https://stanford.edu/~shervine/blog/keras-how-to-generate-data-on-the-fly)
+* [Understanding ctc loss](https://stackoverflow.com/questions/57292896/understanding-ctc-loss-for-speech-recognition-in-keras)
